@@ -73,13 +73,15 @@ const handleTaskActions = (e) => {
 
     if (!newTitle) {
       inputEditEl.value = "";
-      return alert("Task title cannot be empty!");
+      alert("Task title cannot be empty!");
+      inputEditEl.focus();
+      return;
     }
     if (hasDuplicate(newTitle, taskIndex)) {
       inputEditEl.value = "";
-      return alert(
-        `"${newTitle}" is already existed. Please try another title!`
-      );
+      alert(`"${newTitle}" is already existed. Please try another title!`);
+      inputEditEl.focus();
+      return;
     }
 
     tasks[taskIndex].title = newTitle;
