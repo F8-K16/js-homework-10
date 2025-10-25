@@ -53,7 +53,9 @@ const handleTaskActions = (e) => {
   }
 
   if (e.target.closest(".js-edit")) {
-    tasks.some((task, index) => (task.editing = index === taskIndex));
+    tasks.forEach((task, index) => (task.editing = index === taskIndex));
+    console.log(tasks);
+
     renderTask();
     return;
   }
