@@ -56,13 +56,15 @@ const handleTaskActions = (e) => {
 
   if (e.target.closest(".js-edit")) {
     taskItem.innerHTML = `
-        <form class="js-edit-form w-full flex items-center">
+        <form class="js-edit-form w-full flex text-sm">
             <input type="text" value="${htmlEntities(
               task.title
-            )}" class="js-edit-input bg-[#1a1a40] outline-none border border-solid border-[#8758ff]  text-white py-2 px-4 w-[300px]" />
-            <button class="js-done bg-white text-[#8758ff] border-none cursor-pointer px-2 py-2 ml-2 font-semibold rounded hover:bg-[#1a1a40] hover:text-white transition">Done</button>
+            )}" class="js-edit-input bg-transparent outline-none border border-solid border-[#8758ff]  text-white py-2 px-4 w-[300px]" />
+            <button class="js-done bg-[#8758ff] text-white border-none cursor-pointer px-2 py-2  hover:text-[#1a1a40]">Add Task</button>
         </form>
     `;
+    taskItem.classList.add("bg-transparent");
+    taskItem.classList.remove("py-3", "px-4");
   }
 
   if (e.target.closest(".js-done")) {
@@ -89,7 +91,7 @@ const handleTaskActions = (e) => {
   }
 
   if (e.target.closest(".js-delete")) {
-    if (confirm(`Do you want to delete "${task.title}"`)) {
+    if (confirm(`Do you want to delete "${task.title}" ?`)) {
       tasks.splice(taskIndex, 1);
       renderTask();
     }
